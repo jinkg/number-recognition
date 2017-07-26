@@ -1,14 +1,11 @@
 import os
 import sys
-import gzip
 import tarfile
 import h5py
-import numpy as np
 from six.moves import urllib
 from matplotlib import pyplot as plt
 from matplotlib import patches as patches
 from matplotlib import image
-from matplotlib import lines
 
 # http://ufldl.stanford.edu/housenumbers/train.tar.gz
 # http://ufldl.stanford.edu/housenumbers/test.tar.gz
