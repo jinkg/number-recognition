@@ -105,33 +105,29 @@ def get_mat_data(f, size):
 
 
 def load_dataset(size):
-    train_images = [f for f in os.listdir(train_file) if f.endswith('.png')]
-    test_images = [f for f in os.listdir(test_file) if f.endswith('.png')]
-
     with h5py.File(train_file + '/digitStruct.mat') as f:
         train_labels = get_mat_data(f, size)
     with h5py.File(test_file + '/digitStruct.mat') as f:
         test_labels = get_mat_data(f, size)
 
-    return train_images, train_labels, test_images, test_labels
+    return train_labels, test_labels
 
 
-train_images, train_labels, test_images, test_labels = load_dataset(20)
+train_data, test_data = load_dataset(20)
 
-print(train_images)
-print(train_labels)
-print(test_images)
-print(test_labels)
+print(train_data)
+print(test_data)
 
-index = 5
-demo_image = train_images[index]
-demo_label = train_labels[index]
-left = demo_label['left']
-top = demo_label['top']
-width = demo_label['width']
-height = demo_label['height']
-print(left, top, width, height)
-img = image.imread(train_file + '/' + demo_image)
+index = 16
+item_data = train_data[index]
+image_file = item_data['filename']
+label = item_data['label']
+left = item_data['left']
+top = item_data['top']
+width = item_data['width']
+height = item_data['height']
+print("label = ", label, " left = ", left, " top = ", top, " width = ", width, " height = ", height)
+img = image.imread(train_file + '/' + image_file)
 fig, ax = plt.subplots(1)
 ax.imshow(img)
 for i in range(len(height)):
