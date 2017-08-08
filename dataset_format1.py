@@ -50,7 +50,7 @@ train_file = maybe_download('train.tar.gz', 404141560)
 test_file = maybe_download('test.tar.gz', 276555967)
 # extra_file = maybe_download('extra.tar.gz', 1955489752)
 
-data_root = 'data/'
+data_root = 'data_format1/'
 
 
 def maybe_extract(filename, force=False):
@@ -118,7 +118,7 @@ train_data, test_data = load_dataset(20)
 print(train_data)
 print(test_data)
 
-index = 16
+index = 18
 item_data = train_data[index]
 image_file = item_data['filename']
 label = item_data['label']
